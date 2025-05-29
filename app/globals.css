@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
+  /* Light mode colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  
+  /* Brand colors */
+  --primary: #2563eb;         /* Blue 600 - main brand */
+  --primary-hover: #1d4ed8;   /* Blue 700 - hover state */
+  --secondary: #f97316;       /* Orange 500 - accent */
+  --secondary-hover: #ea580c; /* Orange 600 - hover */
+  --accent: #8b5cf6;          /* Purple 500 - premium */
+  --accent-hover: #7c3aed;    /* Purple 600 - hover */
+  
+  /* Neutral colors */
+  --muted: #f8fafc;           /* Slate 50 - subtle bg */
+  --muted-foreground: #64748b; /* Slate 500 - secondary text */
+  --border: #e2e8f0;          /* Slate 200 - borders */
+  --card: #ffffff;            /* Card backgrounds */
+  --card-foreground: #0f172a; /* Card text */
+  
+  /* Status colors */
+  --success: #10b981;         /* Emerald 500 - success */
+  --warning: #f59e0b;         /* Amber 500 - warnings */
+  --error: #ef4444;           /* Red 500 - errors */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark mode colors */
+    --background: #0f172a;      /* Slate 900 */
+    --foreground: #f1f5f9;      /* Slate 100 */
+    
+    /* Adjusted brand colors for dark */
+    --primary: #3b82f6;         /* Blue 500 - brighter in dark */
+    --primary-hover: #2563eb;   /* Blue 600 */
+    --secondary: #fb923c;       /* Orange 400 - softer in dark */
+    --secondary-hover: #f97316; /* Orange 500 */
+    --accent: #a78bfa;          /* Purple 400 - softer */
+    --accent-hover: #8b5cf6;    /* Purple 500 */
+    
+    /* Dark neutrals */
+    --muted: #1e293b;           /* Slate 800 */
+    --muted-foreground: #94a3b8; /* Slate 400 */
+    --border: #334155;          /* Slate 700 */
+    --card: #1e293b;            /* Slate 800 */
+    --card-foreground: #f1f5f9; /* Slate 100 */
+    
+    /* Dark status colors */
+    --success: #34d399;         /* Emerald 400 */
+    --warning: #fbbf24;         /* Amber 400 */
+    --error: #f87171;           /* Red 400 */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Typography scale for 3D printing site */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-weight: 600;
 }
