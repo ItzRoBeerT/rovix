@@ -1,3 +1,4 @@
+// components/auth/SignIn.tsx - OPTIMIZED Next.js way
 'use client';
 
 import { authClient } from '@/lib/auth-client';
@@ -66,7 +67,13 @@ export default function SignIn() {
 						setLoading(false);
 						setSuccess(true);
 
-						router.push('/');
+						// 1. Refresh server components data
+						router.refresh();
+
+						// 2. Small delay to ensure server state is updated
+						setTimeout(() => {
+							router.push('/');
+						}, 100);
 					},
 				}
 			);
