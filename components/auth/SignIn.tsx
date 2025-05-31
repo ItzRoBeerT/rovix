@@ -1,9 +1,12 @@
 'use client';
 
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function SignIn() {
+	const router = useRouter();
+
 	const [formData, setFormData] = useState({
 		email: '',
 		password: '',
@@ -13,7 +16,6 @@ export default function SignIn() {
 	const [success, setSuccess] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
-	// region Functions
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 
@@ -63,19 +65,20 @@ export default function SignIn() {
 						console.log('Sign-in successful:', context);
 						setLoading(false);
 						setSuccess(true);
-						// TODO: Optionally redirect or perform additional actions on success
+
+						router.push('/');
 					},
 				}
 			);
 		} catch (error) {
 			console.error('Error during sign-in:', error);
 			setError('An error occurred while signing in. Please try again.');
+			setLoading(false);
 		}
 	};
 
-	// endregion
 	return (
-		<form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-muted p-4 rounded ">
+		<form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-muted p-4 rounded">
 			<label htmlFor="email">Email:</label>
 			<input
 				type="text"
@@ -98,8 +101,8 @@ export default function SignIn() {
 				className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 hover:border-primary/50"
 			/>
 
-			{error && <p className="error">{error}</p>}
-			{success && <p className="success">Sign-in successful!</p>}
+			{error && <p className="error text-red-500">{error}</p>}
+			{success && <p className="success text-green-500">Sign-in successful!</p>}
 
 			<button
 				type="submit"

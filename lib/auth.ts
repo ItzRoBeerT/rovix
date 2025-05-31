@@ -23,18 +23,6 @@ export const auth = betterAuth({
 			console.log('=====================================');
 
 			// TODO: For production, replace with real email sending:
-			// const { Resend } = await import('resend');
-			// const resend = new Resend(process.env.RESEND_API_KEY);
-			// await resend.emails.send({
-			//     from: 'noreply@rovix.com',
-			//     to: user.email,
-			//     subject: 'Verify your Rovix account',
-			//     html: `
-			//         <h1>Welcome to Rovix, ${user.name}!</h1>
-			//         <p>Click the link below to verify your email:</p>
-			//         <a href="${url}">Verify Email</a>
-			//     `
-			// });
 		},
 		sendOnSignUp: true,
 		autoSignInAfterVerification: true,
