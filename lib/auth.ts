@@ -1,5 +1,6 @@
 // auth.ts - Minimal Better Auth Configuration
 import { betterAuth } from 'better-auth';
+import { nextCookies } from 'better-auth/next-js';
 import { Pool } from 'pg';
 
 export const auth = betterAuth({
@@ -28,4 +29,7 @@ export const auth = betterAuth({
 		autoSignInAfterVerification: true,
 		expiresIn: 3600, // 1 hour
 	},
+	plugins: [
+		nextCookies()
+	]
 });
