@@ -7,6 +7,7 @@ import { headers } from 'next/headers';
 import { APIError } from 'better-auth/api';
 
 export async function signInAction(prevState: any, formData: FormData) {
+	let shouldRedirect = false;
 	try {
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
@@ -28,7 +29,7 @@ export async function signInAction(prevState: any, formData: FormData) {
 		});
 
 		revalidatePath('/', 'layout');
-		redirect('/');
+		shouldRedirect = true;
 	} catch (error) {
 		console.error('Error during signInAction:', error);
 
@@ -44,6 +45,10 @@ export async function signInAction(prevState: any, formData: FormData) {
 		}
 		return { error: 'An error occurred during sign-in.' };
 	}
+
+	if (shouldRedirect) {
+		redirect('/');
+	}
 }
 
 export async function signOutAction() {
@@ -53,9 +58,10 @@ export async function signOutAction() {
 		});
 
 		revalidatePath('/', 'layout');
-		redirect('/');
 	} catch (error) {
 		console.error('SignOut error:', error);
 		throw error;
 	}
+
+	redirect('/');
 }
