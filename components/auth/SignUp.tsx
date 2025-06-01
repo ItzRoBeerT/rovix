@@ -138,15 +138,15 @@ export default function SignUp() {
 						id="password"
 						{...register('password')}
 						onChange={(e) => {
-							register('password').onChange(e); // Keep RHF functionality
-							setPassword(e.target.value); // Track for strength indicator
+							register('password').onChange(e); 
+							setPassword(e.target.value);
 						}}
 						className={getInputClassName(errors.password)}
 						placeholder="Create a password (at least 8 characters)"
 						disabled={loading}
 					/>
 
-					{/* 🎯 PASSWORD STRENGTH INDICATOR */}
+					{/* PASSWORD STRENGTH INDICATOR */}
 					{password && (
 						<div className="mt-2 p-3 bg-gray-50 rounded border">
 							<div className="text-xs font-medium text-gray-600 mb-2">Password Strength:</div>
