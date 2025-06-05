@@ -1,11 +1,10 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold">Welcome to Rovix!</h1>
+    <section>
+      <h1 className="text-4xl font-bold">¡Bienvenidos a Rovix!</h1>
       <p className="mt-4 text-lg ">
-        This is a simple Next.js application using Tailwind CSS for styling.
+        Sean bienvenidos a Rovix, su tienda de impresión 3D personalizada. Aquí ofrecemos servicios de impresión 3D de alta calidad, diseños personalizados y una experiencia de compra segura con pago a través de PayPal. Explora nuestra amplia gama de productos y servicios diseñados para satisfacer todas tus necesidades de impresión 3D.
       </p>
-    </main>
-
+    </section>
   );
 }
